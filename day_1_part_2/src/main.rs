@@ -10,7 +10,7 @@ fn main() {
 			.lines()
 			.map(|x: &str| x.parse::<u32>().expect("File should contain only unsigned ints").clone()) {
 
-			match window.size() {
+		match window.size() {
 			0..=2 => { window.add(val).expect("We should be able to add the value"); },
 			_ => {
 				let prev: u32 = window.remove().expect("We should be able to remove the value");
