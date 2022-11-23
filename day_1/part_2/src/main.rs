@@ -1,23 +1,21 @@
-extern crate queues;
-use queues::*;
-use std::fs;
+use std::{fs, collections::VecDeque};
 
 fn main() {
-	let mut window: Queue<u32> = queue![];
+	let mut window: VecDeque<u32> = VecDeque::new();
 	let mut increase_count: u32 = 0;
 	for val in fs::read_to_string("day_1/part_2/input.txt")
 			.expect("Should have been able to read the file")
 			.lines()
 			.map(|x: &str| x.parse::<u32>().expect("File should contain only unsigned ints").clone()) {
 
-		match window.size() {
-			0..=2 => { window.add(val).expect("We should be able to add the value"); },
+		match window.len() {
+			0..=2 => { window.push_back(val); },
 			_ => {
-				let prev: u32 = window.remove().expect("We should be able to remove the value");
+				let prev: u32 = window.pop_front().expect("We should be able to remove the value");
 				if val > prev {
 					increase_count += 1;
 				}
-				window.add(val).expect("We should be able to add the value");
+				window.push_back(val);
 			}
 		}
 	}
