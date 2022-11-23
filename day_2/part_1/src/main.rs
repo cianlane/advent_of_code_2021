@@ -5,7 +5,7 @@ fn main() {
     let mut position: i32 = 0;
     // let mut prev: Option<u32> = None;
     // let mut increase_count: u32 = 0;
-    for val in fs::read_to_string("input.txt")
+    for val in fs::read_to_string("day_2/part_1/input.txt")
             .expect("Should have been able to read the file")
             .lines()
             .map(|x: &str| {
