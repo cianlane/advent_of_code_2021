@@ -5,7 +5,7 @@ use std::fs;
 fn main() {
 	let mut window: Queue<u32> = queue![];
 	let mut increase_count: u32 = 0;
-	for val in fs::read_to_string("input.txt")
+	for val in fs::read_to_string("day_1/part_2/input.txt")
 			.expect("Should have been able to read the file")
 			.lines()
 			.map(|x: &str| x.parse::<u32>().expect("File should contain only unsigned ints").clone()) {
